@@ -1,0 +1,227 @@
+.menu {
+    display: flex;
+    justify-content: space-between;
+    margin: 53px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+.top_nav ul {
+    display: flex;
+    justify-content: space-between;
+    width: 663px;
+    align-items: center;
+}
+
+ a {
+    color: #B8BECD;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0px;
+    transition: color 0.3s ease; /* Переход цвета за 0.3 секунды */
+    }
+
+
+.top_nav__list_item a:hover {
+    color: orange; /* Цвет текста при наведении */
+}
+
+.top_nav__list_item:first-child a {
+    font-weight: 500;
+    color: #202336;
+}
+
+.top_nav__login {
+    display: flex;
+    justify-content: center;
+    background-color: #FFFFFF;
+    width: 135px;
+    padding-left: 0px;
+    padding-right: 0px;
+    color: #FB8F1D;
+    }
+
+.top_nav__list_ite a {
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0px;
+}
+
+.top_nav__register {
+    color: #FFFFFF;
+}
+
+.burger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 25px;
+}
+
+.burger .line {
+    width: 100%;
+    height: 3px;
+    background-color: #202336;
+}
+
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+    }
+
+.content__left {
+    justify-content: left;
+
+    }
+
+.content img {
+    width: 60%;
+    height: 60%;
+}
+
+.content__left p {
+    color: #202336;
+    font-family: Inter;
+    font-size: 22px;
+    font-weight: 600;
+    margin-top: 74px;
+}
+
+#header_hr {
+    width: 32px;
+    height: 1px;
+    background-color: #000000;
+    border: 0.1px solid #000000;
+    margin: 0px;
+    margin-top: 20px;
+
+}
+
+.header_content__explore {
+    margin: 51px 0px;
+    width: 180px;
+    height: 52px;
+    border-radius: 8px;
+    background: #FB8F1D;
+    border: 1px solid #FB8F1D;
+    align-items: center;
+    color: #FFFFFF;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 35px 0px 0px 0px;
+
+
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .header_content__explore:hover {
+    background-color: #f39c12; /* Изменение цвета фона при наведении */
+    transform: scale(1.05); /* Легкое увеличение кнопки при наведении */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Добавление тени */
+
+}
+
+.header_content__explore a {
+    color: #FFFFFF;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0px;
+}
+
+
+@media screen and (max-width: 850px) {
+
+    .top_nav ul {
+        display: none; /* Скрываем стандартное меню */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        background-color: #fff;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .active ul{
+    margin-top: 20px;
+        display: flex; /* Показываем меню при активации */
+    }
+
+    .burger {
+        display: flex; /* Показываем бургер-меню */
+    }
+
+    .top_nav li {
+        margin: 10px 0; /* Увеличиваем отступы между пунктами меню */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .content {
+        flex-direction: column;
+        padding: 20px;
+        align-items: center;
+    }
+
+    .content img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .content__left p {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    #header_hr {
+        display: none;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        margin-top: 10px;
+    }
+
+    select {
+        margin: 10px 10px;
+    }
+
+    .form_top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form_bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header_content__explore {
+        margin: 20px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 40px;
+        line-height: 50px;
+    }
+}
