@@ -36,11 +36,19 @@ nav {
     width: 135px;
     padding-left: 0px;
     padding-right: 0px;
-    }
-
-.top_nav__login a {
     color: #FB8F1D;
     }
+
+.top_nav__list_ite a {
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0px;
+}
+
+.top_nav__register {
+    color: #FFFFFF;
+}
 
 .content {
     display: flex;
@@ -84,6 +92,11 @@ nav {
     background: #FB8F1D;
     border: 1px solid #FB8F1D;
     align-items: center;
+    color: #FFFFFF;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 35px 0px 0px 0px;
 }
 
 .header_content__explore a {
