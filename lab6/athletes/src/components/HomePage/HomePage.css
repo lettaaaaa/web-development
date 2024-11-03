@@ -1,0 +1,89 @@
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px; /* немного увеличим отступ */
+}
+
+.hero .hero-image img {
+    width: 320px; /* слегка увеличим ширину */
+    height: auto;
+    border-radius: 10px; /* добавим скругленные углы */
+}
+
+.hero .hero-text {
+    max-width: 580px;
+}
+
+.hero h1 {
+    font-size: 40px; /* увеличим шрифт */
+    margin-bottom: 25px; /* увеличим отступ */
+    font-family: 'Georgia', serif; /* более элегантный шрифт */
+}
+
+.section_tiles {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tiles {
+    display: flex;
+    flex-wrap: wrap; /* позволит карточкам переходить на новую строку */
+    justify-content: center; /* центрируем карточки */
+    margin-bottom: 50px; /* увеличим отступ */
+    gap: 20px; /* добавим немного пространства между карточками */
+}
+
+.tiles .tile {
+    background-color: #f9f9f9; /* добавим мягкий светлый цвет фона */
+    padding: 25px;
+    text-align: center;
+    width: 300px; /* фиксированная ширина карточки */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* увеличим и смягчим тень */
+    border-radius: 10px; /* добавим скругленные углы */
+    transition: transform 0.3s; /* анимация при наведении */
+}
+
+.tiles .tile:hover {
+    transform: scale(1.05); /* легкое увеличение при наведении */
+}
+
+.tiles .tile img {
+    width: 100%;
+    height: 400px; /* увеличим высоту */
+    background-color: #ddd; /* немного светлее фон */
+    margin-bottom: 15px;
+    border-radius: 5px; /* добавим скругление изображения */
+}
+
+.tiles h2 {
+    font-size: 26px; /* увеличим шрифт заголовка */
+    margin-bottom: 15px;
+}
+
+.tiles p {
+    font-size: 15px; /* чуть увеличим размер текста */
+    line-height: 1.6; /* сделаем текст более читабельным */
+}
+
+.view-more {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 60px; /* фиксированная ширина кнопки */
+    padding: 8px 0; /* убрали горизонтальные отступы, оставив вертикальные */
+    background-color: #444; /* более мягкий оттенок для кнопки */
+    color: white;
+    border: none;
+    border-radius: 6px; /* уменьшенный радиус */
+    font-size: 15px; /* немного уменьшили шрифт */
+    cursor: pointer;
+    transition: background-color 0.3s; /* анимация при наведении */
+    align-self: flex-start; /* предотвращает растяжение */
+}
+
+.view-more:hover {
+    background-color: #555; /* эффект при наведении */
+}
