@@ -1,0 +1,74 @@
+/* Filters */
+.filters {
+    display: flex;
+    gap: 15px; /* Увеличила разрыв */
+    justify-content: center;
+    padding: 20px;
+    background-color: #f3f4f6; /* Заменила цвет фона на более светлый */
+    border-bottom: 1px solid #ddd;
+}
+
+.filters select, .filters button {
+    padding: 10px;
+    border: 1px solid #bbb; /* Сделала границу более светлой */
+    border-radius: 8px; /* Увеличила радиус закругления */
+    background-color: #fff;
+    font-family: 'Arial', sans-serif; /* Добавила шрифт */
+    transition: all 0.3s ease; /* Анимация на изменение */
+}
+
+.filters select:hover, .filters button:hover {
+    background-color: #e0e0e0; /* Цвет при наведении */
+}
+
+/* Tiles Section */
+.tiles-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 25px; /* Увеличила разрыв */
+    padding: 30px;
+    max-width: 1300px; /* Увеличила ширину */
+    margin: 0 auto;
+}
+
+/* Tile Style */
+.tile {
+    background-color: #fafafa; /* Светлый фон для блоков */
+    border: 1px solid #ddd;
+    border-radius: 12px; /* Более мягкое закругление */
+    padding: 20px;
+    width: 22%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Сделала тень больше */
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.tile:hover {
+    transform: translateY(-5px); /* Поднимается при наведении */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Глубже тень при наведении */
+}
+
+.tile img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.tile h2 {
+    font-size: 1.6em; /* Увеличила размер */
+    margin: 15px 0;
+    color: #333; /* Более насыщенный цвет */
+    font-family: 'Georgia', serif; /* Шрифт с засечками */
+}
+
+.tile p {
+    font-size: 1em; /* Увеличила размер текста */
+    color: #666; /* Более мягкий цвет */
+}
+
+.price {
+    font-size: 1.4em; /* Увеличила размер */
+    font-weight: bold; /* Жирный шрифт для цены */
+    color: #4CAF50; /* Зеленый оттенок для цены */
+    margin: 15px 0;
+}
