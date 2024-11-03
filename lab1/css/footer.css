@@ -1,0 +1,39 @@
+footer {
+    background: #F8F8F8;
+    }
+
+.footer_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+}
+
+.footer_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 32px;
+    width: 100%;
+}
+
+.footer_top p {
+    width: 391px;
+    color: #848484;
+    font-family: Mulish;
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 28px; /* 164.706% */
+}
+
+#footer_hr {
+    width: 100%;
+    height: 0.6px;
+    background: #C4C4C4;
+}
+
+.footer_bottom {
+    display: flex;
+    gap: 35px;
+    margin-bottom: 40px;
+}
