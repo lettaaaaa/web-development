@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Athlete</title>
+    <link rel="stylesheet" href="style_create.css">
+</head>
+<body>
+<header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="create.html">Create</a>
+    </nav>
+</header>
+<section>
+    <form id="athleteForm">
+        <label for="name">Athlete Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="club">Club:</label>
+        <input type="text" id="club" name="club" required>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+
+        <label for="category">Category:</label>
+        <select id="category" name="category" required>
+            <option value="MSMK">MSMK</option>
+            <option value="KMSMK">KMSMK</option>
+            <option value="MSU">MSU</option>
+            <option value="KMSU">KMSU</option>
+            <option value="I">I</option>
+        </select>
+
+        <button type="submit">Save Athlete</button>
+    </form>
+</section>
+<script src="scripts/create.js"></script>
+</body>
+</html>
