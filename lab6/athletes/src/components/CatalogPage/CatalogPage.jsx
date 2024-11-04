@@ -3,58 +3,42 @@ import Select from './Select';
 import PrimaryButton from './PrimaryButton';
 import ProductList from './ProductList';
 import './CatalogPage.css';
-import { useProducts } from '../../ProductContext';
+import { fetchProducts } from '../../api';
 
 const CatalogPage = () => {
-    const { products } = useProducts();
-
     // Состояния для строки поиска и фильтров
     const [searchTerm, setSearchTerm] = useState('');
-    const [filteredProducts, setFilteredProducts] = useState(products);
+    const [filteredProducts, setFilteredProducts] = useState([]);
     const [selectedColor, setSelectedColor] = useState('All Colors');
     const [selectedSize, setSelectedSize] = useState('All Sizes');
     const [selectedCountry, setSelectedCountry] = useState('All Countries');
 
-    // Обработчик изменения строки поиска
-    const handleSearchChange = (e) => {
-        setSearchTerm(e.target.value);
+    // Функция загрузки продуктов
+    const loadProducts = async () => {
+        const filters = {
+            color: selectedColor,
+            size: selectedSize,
+            country: selectedCountry,
+            search: searchTerm,
+        };
+        const products = await fetchProducts(filters);
+        setFilteredProducts(products);
     };
 
-    // Применение поиска при каждом вводе буквы
+    // Загрузка продуктов при изменении фильтров или строки поиска
     useEffect(() => {
-        const lowercasedSearchTerm = searchTerm.toLowerCase();
-        const searchedProducts = products.filter(product =>
-            product.title.toLowerCase().includes(lowercasedSearchTerm)
-        );
-        setFilteredProducts(searchedProducts);
-    }, [searchTerm, products]);
+        loadProducts();
+    }, [searchTerm, selectedColor, selectedSize, selectedCountry]);
 
     // Обработчики изменения фильтров
+    const handleSearchChange = (e) => setSearchTerm(e.target.value);
     const handleColorChange = (e) => setSelectedColor(e.target.value);
     const handleSizeChange = (e) => setSelectedSize(e.target.value);
     const handleCountryChange = (e) => setSelectedCountry(e.target.value);
 
     // Применение фильтров по нажатию на "Apply"
     const applyFilters = () => {
-        let filtered = products;
-
-        // Фильтрация по цвету
-        if (selectedColor !== 'All Colors') {
-            filtered = filtered.filter(product => product.color === selectedColor);
-        }
-
-        // Фильтрация по размеру
-        if (selectedSize !== 'All Sizes') {
-            filtered = filtered.filter(product => product.size === selectedSize);
-        }
-
-        // Фильтрация по стране
-        if (selectedCountry !== 'All Countries') {
-            filtered = filtered.filter(product => product.country === selectedCountry);
-        }
-
-        // Устанавливаем отфильтрованные продукты
-        setFilteredProducts(filtered);
+        loadProducts();
     };
 
     return (
