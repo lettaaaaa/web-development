@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ProductFields = () => {
-
+    // Генерируем случайные данные для отображения полей
     const options = [
         { name: 'Material', value: 'Cotton' },
         { name: 'Weight', value: '1.2kg' },

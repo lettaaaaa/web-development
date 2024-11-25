@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Tile from './Tile';
-import tileImage1 from '../../images/1.jpg';
-import tileImage2 from '../../images/2.jpg';
-import tileImage3 from '../../images/3.jpg';
-import tileImage4 from '../../images/4.jpg';
+import tileImage1 from '../../images/tile_1.webp';
+import tileImage2 from '../../images/tile_2.jfif';
+import tileImage3 from '../../images/tile_4.jfif';
+import tileImage4 from '../../images/tile_3.jfif';
 import ViewMoreButton from './ViewMoreButton';
 
 const TileSection = () => {
@@ -21,37 +21,36 @@ const TileSection = () => {
               <Tile
                   image={tileImage1}
                   altText="Tile 1"
-                  title="asics"
-                  description="найкращі кросси у житті"
+                  title="Blue jeans"
+                  description="Australian rock band formed in Sydney in November 1973 by Scottish brothers Malcolm and Angus Young."
               />
               <Tile
                   image={tileImage2}
                   altText="Tile 2"
-                  title="new balance"
-                  description="ну таке, я б не купила"
+                  title="Jacket"
+                  description="Black Sabbath is a British rock band formed in Birmingham, England, in 1968 and had a significant influence on the development of rock music, especially heavy metal."
               />
               <Tile
                   image={tileImage3}
                   altText="Tile 3"
-                  title="hoka"
-                  description="ван лаф у моєму житті"
+                  title="Black sneakers"
+                  description="Led Zeppelin is a British rock band formed in September 1968 in London, and is recognized as one of the most successful, innovative and influential in modern history."
               />
-              {/* Отображение дополнительных элементов при нажатии на кнопку */}
-          {showMore && (
-            <div>
-              <Tile
-                  image={tileImage4}
-                  altText="Tile 3"
-                  title="saucony"
-                  description="какашка, яка подобається Єгору"
-              />
-            </div>
-          )}
           </div>
 
 
 
-
+          {/* Отображение дополнительных элементов при нажатии на кнопку */}
+          {showMore && (
+            <div className="extra-content">
+              <Tile
+                  image={tileImage4}
+                  altText="Tile 3"
+                  title="Black sneakers"
+                  description="Led Zeppelin is a British rock band formed in September 1968 in London, and is recognized as one of the most successful, innovative and influential in modern history."
+              />
+            </div>
+          )}
           {/* Кнопка для показа дополнительных элементов */}
           <ViewMoreButton onClick={handleViewMore} />
       </section>

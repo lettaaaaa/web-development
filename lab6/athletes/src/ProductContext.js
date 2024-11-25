@@ -1,8 +1,8 @@
 import React, { createContext, useContext, useState } from 'react';
-import asics from './images/1.jpg';
-import balance from './images/2.jpg';
-import hoka from './images/3.jpg';
-import saucony from './images/4.jpg';
+import jeans from './images/tile_1.webp';
+import jacket from './images/tile_2.jfif';
+import shirt from './images/tile_3.jfif';
+import sneakers from './images/tile_4.jfif';
 
 
 // Создаем контекст
@@ -20,44 +20,44 @@ export const ProductProvider = ({ children }) => {
     const [products] = useState(
         [
 {
-            itemNumber: '1',
-            title: 'asics',
-            description: 'дуже зручні',
+            itemNumber: 'Item 1',
+            title: 'Amazing Black Jacket',
+            description: 'Stylish and comfortable jacket',
             price: '$100',
-            color: 'white',
-            size: '42',
+            color: 'red',
+            size: 'M',
             country: 'Canada',
-            image: asics
+            image: jacket
         },
         {
-            itemNumber: '2',
-            title: 'new balance',
-            description: 'швидко брудняться',
+            itemNumber: 'Item 2',
+            title: 'Blue T-shirt',
+            description: 'Comfortable cotton T-shirt',
             price: '$50',
-            color: 'white',
-            size: '40',
+            color: 'blue',
+            size: 'S',
             country: 'England',
-            image: balance
+            image: shirt
         },
         {
-            itemNumber: '3',
-            title: 'hoka',
-            description: 'на кожен день',
+            itemNumber: 'Item 3',
+            title: 'Black Sneakers',
+            description: 'Trendy black sneakers',
             price: '$75',
-            color: 'pink',
-            size: '40',
+            color: 'black',
+            size: 'S',
             country: 'USA',
-            image: hoka
+            image: sneakers
         },
         {
-            itemNumber: '4',
-            title: 'saucony',
-            description: 'какашка',
+            itemNumber: 'Item 4',
+            title: 'Blue Jeans',
+            description: 'Comfortable denim jeans',
             price: '$60',
-            color: 'grin',
-            size: '41',
+            color: 'blue',
+            size: 'L',
             country: 'England',
-            image: saucony
+            image: jeans
         }
         ]
     );

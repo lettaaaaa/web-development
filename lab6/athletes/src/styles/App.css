@@ -6,8 +6,18 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f3f4f6; /* Светлый фон для большей мягкости */
-    color: #2c3e50; /* Темно-синий оттенок для текста */
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.App {
+    display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* 100% высоты окна */
+}
+
+main {
+    flex: 1; /* Занимает всё доступное пространство */
 }
 
 header {
@@ -15,12 +25,11 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background-color: #2c3e50; /* Глубокий темный цвет для контраста */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для объема */
+    background-color: #333;
 }
 
 header .logo img {
-    width: 90px;
+    width: 80px;
     height: auto;
 }
 
@@ -33,18 +42,18 @@ nav ul li {
     margin: 0 10px;
 }
 
-nav ul li a {
+
+.nav-link {
     text-decoration: none;
-    color: #f3f4f6;
+    color: white;
     font-weight: bold;
-    padding: 8px 16px;
-    background-color: #3498db; /* Цвет акцента для кнопок */
-    border-radius: 25px;
-    transition: background-color 0.3s ease;
+    padding: 10px 20px;
+    background-color: #ddd;
+    border-radius: 50px;
 }
 
-nav ul li a:hover {
-    background-color: #2980b9; /* Немного темнее для эффекта наведения */
+.nav-link:hover {
+    background-color: #ccc;
 }
 
 main {
@@ -52,48 +61,40 @@ main {
 }
 
 footer {
-    background-color: #34495e; /* Темный оттенок для контраста с основным содержимым */
+    background-color: #f1f1f1;
     padding: 20px;
     text-align: center;
-    color: #f3f4f6; /* Белый текст для контраста */
 }
 
 .footer_top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; /* Позволяет адаптироваться на маленьких экранах */
-    padding-bottom: 20px;
-    border-bottom: 1px solid #bdc3c7;
 }
-.footer_img {
+footer .branding {
     display: flex;
     flex-direction: column;
+    justify-content: left;
     align-items: flex-start;
     margin-bottom: 20px;
 }
 
-.footer_img {
-    width: 60px;
+footer .branding img {
+    width: 50px;
     height: auto;
     margin-right: 20px;
 }
 
-.social-icons a {
+footer .social-icons a {
     margin: 0 10px;
-    transition: transform 0.2s ease;
 }
 
-.social-icons a:hover {
-    transform: scale(1.1); /* Эффект увеличения при наведении */
-}
-
-.social-icons img {
-    width: 35px;
+footer .social-icons img {
+    width: 30px;
     height: auto;
 }
 
 footer p {
     font-size: 12px;
-    color: #ecf0f1; /* Светлый оттенок текста */
+    color: #999;
 }
