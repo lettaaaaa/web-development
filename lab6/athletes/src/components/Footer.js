@@ -1,24 +1,24 @@
 import React from 'react';
-import logo from '../images/logo.svg';
-import socialIcon from '../images/social.svg';
+import logo from '../images/logo.jpg';
+import logo_social from '../images/6.jpg';
 
 const Footer = () => {
   return (
     <footer>
       <div className="footer_top">
         <div className="branding">
-          <h2>Branding stuff</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur<br />adipiscing elit.</p>
+          <h2>Магаз шкар</h2>
+          <p>Краща обувка вашого життя</p>
         </div>
-        <img src={logo} alt="Logo" />
+        <img className="footer_img" src={logo} alt="Logo" />
         <div className="social-icons">
-          <a href="#"><img src={socialIcon} alt="Facebook" /></a>
-          <a href="#"><img src={socialIcon} alt="Twitter" /></a>
-          <a href="#"><img src={socialIcon} alt="LinkedIn" /></a>
-          <a href="#"><img src={socialIcon} alt="Google" /></a>
+          <a href="#"><img src={logo_social} alt="Facebook" /></a>
+          <a href="#"><img src={logo_social} alt="Twitter" /></a>
+          <a href="#"><img src={logo_social} alt="LinkedIn" /></a>
+          <a href="#"><img src={logo_social} alt="Google" /></a>
         </div>
       </div>
-      <p>&copy; 2024 IoT. All rights reserved.</p>
+      <p>&copy; 2024 IoT</p>
     </footer>
   );
 };

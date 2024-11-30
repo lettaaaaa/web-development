@@ -1,15 +1,16 @@
 import React from 'react';
-import headingImage from '../../images/heading.svg';
+import headingImage from '../../images/5.jpg';
 
 const HeroSection = () => {
   return (
     <section className="hero">
       <div className="hero-image">
+      <marquee>"куріння шкодить вашому здоров'ю, бігайте - теж кашляти будете"</marquee>
         <img src={headingImage} alt="Placeholder" />
       </div>
       <div className="hero-text">
-        <h1>Clothes from Egor</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.</p>
+        <h1>Шкари</h1>
+        <p>Сайт з кращими кросівочками від спортсменки МСУ Віолки)</p>
       </div>
     </section>
   );

@@ -73,8 +73,8 @@ const CatalogPage = () => {
             </section>
 
             <section className="filter-section">
-                <Select name="color" options={['All Colors', 'black', 'blue']} value={filters.color} onChange={handleFilterChange} />
-                <Select name="size" options={['All Sizes', 'S', 'L']} value={filters.size} onChange={handleFilterChange} />
+                <Select name="color" options={['All Colors', 'black', 'blue', 'pink', 'white']} value={filters.color} onChange={handleFilterChange} />
+                <Select name="size" options={['All Sizes', '40', '42']} value={filters.size} onChange={handleFilterChange} />
                 <Select name="country" options={['All Countries', 'USA', 'England']} value={filters.country} onChange={handleFilterChange} />
                 <PrimaryButton onClick={handleApplyFilters}>Apply</PrimaryButton>
             </section>

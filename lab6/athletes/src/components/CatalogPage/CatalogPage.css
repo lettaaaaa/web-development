@@ -1,36 +1,51 @@
 /* Filters */
 .filters {
     display: flex;
-    gap: 10px;
+    gap: 15px; /* Увеличила разрыв */
     justify-content: center;
     padding: 20px;
-    background-color: #fff;
+    background-color: #f3f4f6; /* Заменила цвет фона на более светлый */
+    border-bottom: 1px solid #ddd;
 }
 
 .filters select, .filters button {
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 1px solid #bbb; /* Сделала границу более светлой */
+    border-radius: 8px; /* Увеличила радиус закругления */
+    background-color: #fff;
+    font-family: 'Arial', sans-serif; /* Добавила шрифт */
+    transition: all 0.3s ease; /* Анимация на изменение */
+}
+
+.filters select:hover, .filters button:hover {
+    background-color: #e0e0e0; /* Цвет при наведении */
 }
 
 /* Tiles Section */
 .tiles-section {
     display: flex;
     justify-content: space-between;
-    gap: 20px;
-    padding: 20px;
-    max-width: 1200px;
+    gap: 25px; /* Увеличила разрыв */
+    padding: 30px;
+    max-width: 1300px; /* Увеличила ширину */
     margin: 0 auto;
 }
 
+/* Tile Style */
 .tile {
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 10px;
+    background-color: #fafafa; /* Светлый фон для блоков */
+    border: 1px solid #ddd;
+    border-radius: 12px; /* Более мягкое закругление */
     padding: 20px;
     width: 22%;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Сделала тень больше */
     text-align: center;
+    transition: all 0.3s ease;
+}
+
+.tile:hover {
+    transform: translateY(-5px); /* Поднимается при наведении */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Глубже тень при наведении */
 }
 
 .tile img {
@@ -40,67 +55,20 @@
 }
 
 .tile h2 {
-    font-size: 1.5em;
+    font-size: 1.6em; /* Увеличила размер */
     margin: 15px 0;
+    color: #333; /* Более насыщенный цвет */
+    font-family: 'Georgia', serif; /* Шрифт с засечками */
 }
 
 .tile p {
-    font-size: 0.9em;
-    color: #555;
+    font-size: 1em; /* Увеличила размер текста */
+    color: #666; /* Более мягкий цвет */
 }
 
 .price {
-    font-size: 1.2em;
+    font-size: 1.4em; /* Увеличила размер */
+    font-weight: bold; /* Жирный шрифт для цены */
+    color: #4CAF50; /* Зеленый оттенок для цены */
     margin: 15px 0;
-}
-
-.view-more {
-    padding: 10px 20px;
-    background-color: black;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-/* Footer */
-footer {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    background-color: #fff;
-    border-top: 1px solid #ccc;
-    align-items: center;
-}
-
-.branding p {
-    margin: 0;
-}
-
-.footer-logo img {
-    width: 100px;
-}
-
-.social-icons a {
-    margin: 0 10px;
-    font-size: 1.5em;
-    color: black;
-}
-
-.loader {
-    text-align: center;
-    padding: 20px;
-}
-
-.spinner {
-    border: 4px solid rgba(0, 0, 0, 0.1);
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border-left-color: #09f;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    to { transform: rotate(360deg); }
 }

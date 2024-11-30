@@ -6,8 +6,8 @@ def seed_data():
         # Пара 1
         Product(
             itemNumber="Item 1",
-            title="Sneakers Size 40",
-            description="Comfortable everyday sneakers",
+            title="asics",
+            description="",
             price=100,
             color="white",
             size="40",
@@ -17,8 +17,8 @@ def seed_data():
         ),
         Product(
             itemNumber="Item 5",
-            title="Sneakers Size 42",
-            description="Comfortable everyday sneakers",
+            title="asics",
+            description="дуже зручні",
             price=100,
             color="white",
             size="42",
@@ -29,10 +29,10 @@ def seed_data():
         # Пара 2
         Product(
             itemNumber="Item 2",
-            title="Sporty Shoes Size 40",
-            description="Stylish and lightweight",
+            title="new balance",
+            description="швидко брудняться",
             price=50,
-            color="blue",
+            color="white",
             size="40",
             country="England",
             image="./images/2.jpg",
@@ -40,10 +40,10 @@ def seed_data():
         ),
         Product(
             itemNumber="Item 6",
-            title="Sporty Shoes Size 42",
-            description="Stylish and lightweight",
+            title="new balance",
+            description="швидко брудняться",
             price=50,
-            color="blue",
+            color="white",
             size="42",
             country="England",
             image="./images/2.jpg",
@@ -52,8 +52,8 @@ def seed_data():
         # Пара 3
         Product(
             itemNumber="Item 3",
-            title="Casual Runners Size 40",
-            description="Perfect for outdoor walks",
+            title="hoka",
+            description="на кожен день",
             price=75,
             color="pink",
             size="40",
@@ -63,8 +63,8 @@ def seed_data():
         ),
         Product(
             itemNumber="Item 7",
-            title="Casual Runners Size 42",
-            description="Perfect for outdoor walks",
+            title="hoka",
+            description="на кожен день",
             price=75,
             color="pink",
             size="42",
@@ -75,8 +75,8 @@ def seed_data():
         # Пара 4
         Product(
             itemNumber="Item 4",
-            title="Trail Sneakers Size 40",
-            description="Great for running and hiking",
+            title="saucony",
+            description="какашка",
             price=60,
             color="green",
             size="40",
@@ -86,8 +86,8 @@ def seed_data():
         ),
         Product(
             itemNumber="Item 8",
-            title="Trail Sneakers Size 42",
-            description="Great for running and hiking",
+            title="saucony",
+            description="какашка",
             price=60,
             color="green",
             size="42",

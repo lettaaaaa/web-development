@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../images/logo.svg';
+import logo from '../images/logo.jpg';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../redux/authSlice';
@@ -20,7 +20,7 @@ const Header = () => {
         navigate('/login');
     };
 
-  return (
+   return (
     <header>
       <div className="logo">
         <img src={logo} alt="Logo" />
