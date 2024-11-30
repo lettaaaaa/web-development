@@ -2,48 +2,67 @@ import React, { useState, useEffect } from 'react';
 import Select from './Select';
 import PrimaryButton from './PrimaryButton';
 import ProductList from './ProductList';
+import Loader from './Loader';
+import { fetchProducts } from '../../services/api';
 import './CatalogPage.css';
-import { fetchProducts } from '../../api';
 
 const CatalogPage = () => {
-    // Состояния для строки поиска и фильтров
+    const [products, setProducts] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
-    const [filteredProducts, setFilteredProducts] = useState([]);
-    const [selectedColor, setSelectedColor] = useState('All Colors');
-    const [selectedSize, setSelectedSize] = useState('All Sizes');
-    const [selectedCountry, setSelectedCountry] = useState('All Countries');
+    const [filters, setFilters] = useState({
+        color: '',
+        size: '',
+        country: '',
+    });
+    const [appliedFilters, setAppliedFilters] = useState({
+        color: '',
+        size: '',
+        country: '',
+    });
+    const [appliedSearchTerm, setAppliedSearchTerm] = useState('');
 
-    // Функция загрузки продуктов
+    // Функция для загрузки продуктов
     const loadProducts = async () => {
-        const filters = {
-            color: selectedColor,
-            size: selectedSize,
-            country: selectedCountry,
-            search: searchTerm,
-        };
-        const products = await fetchProducts(filters);
-        setFilteredProducts(products);
+        setIsLoading(true);
+        try {
+            const data = await fetchProducts({ ...appliedFilters, search: appliedSearchTerm });
+             console.log(data)
+            setProducts(data);
+        } catch (error) {
+            console.error("Failed to fetch products:", error);
+        } finally {
+            setTimeout(() => setIsLoading(false), 500);
+        }
     };
 
-    // Загрузка продуктов при изменении фильтров или строки поиска
+    // Загрузка данных при первом рендере и изменении фильтров или строки поиска
     useEffect(() => {
         loadProducts();
-    }, [searchTerm, selectedColor, selectedSize, selectedCountry]);
+    }, [appliedFilters, appliedSearchTerm]);
 
-    // Обработчики изменения фильтров
-    const handleSearchChange = (e) => setSearchTerm(e.target.value);
-    const handleColorChange = (e) => setSelectedColor(e.target.value);
-    const handleSizeChange = (e) => setSelectedSize(e.target.value);
-    const handleCountryChange = (e) => setSelectedCountry(e.target.value);
+    // Обработчики для фильтров
+    const handleFilterChange = (e) => {
+        const { name, value } = e.target;
+        setFilters((prevFilters) => ({
+            ...prevFilters,
+            [name]: value,
+        }));
+    };
 
-    // Применение фильтров по нажатию на "Apply"
-    const applyFilters = () => {
-        loadProducts();
+    // Обработчик строки поиска
+    const handleSearchChange = (e) => {
+        setSearchTerm(e.target.value.toLowerCase());
+    };
+
+    // Обработчик кнопки "Apply"
+    const handleApplyFilters = () => {
+        setAppliedFilters(filters);
+        setAppliedSearchTerm(searchTerm);
     };
 
     return (
         <div>
-            {/* Строка поиска */}
             <section className="search-section">
                 <input
                     type="text"
@@ -53,16 +72,18 @@ const CatalogPage = () => {
                 />
             </section>
 
-            {/* Секция фильтров */}
             <section className="filter-section">
-                <Select options={['All Colors', 'black', 'blue', 'pink', 'white']} value={selectedColor} onChange={handleColorChange} />
-                <Select options={['All Sizes', '40', '41', '42']} value={selectedSize} onChange={handleSizeChange} />
-                <Select options={['All Countries', 'USA', 'England']} value={selectedCountry} onChange={handleCountryChange} />
-                <PrimaryButton onClick={applyFilters}>Apply</PrimaryButton>
+                <Select name="color" options={['All Colors', 'black', 'blue', 'pink', 'white']} value={filters.color} onChange={handleFilterChange} />
+                <Select name="size" options={['All Sizes', '40', '42']} value={filters.size} onChange={handleFilterChange} />
+                <Select name="country" options={['All Countries', 'USA', 'England']} value={filters.country} onChange={handleFilterChange} />
+                <PrimaryButton onClick={handleApplyFilters}>Apply</PrimaryButton>
             </section>
 
-            {/* Список продуктов: показываем отфильтрованные продукты */}
-            <ProductList products={filteredProducts} />
+            {isLoading ? (
+                <Loader />
+            ) : (
+                <ProductList products={products} />
+            )}
         </div>
     );
 };
