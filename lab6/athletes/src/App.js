@@ -19,9 +19,9 @@ function App() {
         <ProductProvider>
             <Router>
                 <div className="App">
-                    {/* Навигация остается неизменной */}
+                    {}
                     <Header/>
-                    {/* Основной контент меняется в зависимости от маршрута */}
+                    {}
                     <main>
                         <Routes>
                             <Route path="/" element={<HomePage/>}/>
@@ -36,7 +36,7 @@ function App() {
 
                         </Routes>
                     </main>
-                    {/* Подвал остается неизменным */}
+                    {}
                     <Footer/>
                 </div>
             </Router>
