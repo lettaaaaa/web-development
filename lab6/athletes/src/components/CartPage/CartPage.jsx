@@ -45,8 +45,12 @@ const CartPage = () => {
                     />
                 ))}
             </div>
-            <TotalAmount total={totalAmount} />
+            <TotalAmount total={totalAmount}/>
+            <div className="checkout-button">
+                <button onClick={() => navigate("/form")}>Checkout</button>
+            </div>
         </div>
+
     );
 };
 
