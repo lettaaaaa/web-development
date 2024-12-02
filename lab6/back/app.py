@@ -9,14 +9,14 @@ import os
 app = Flask(__name__)
 CORS(app)
 
-# Настройка базы данных и секретного ключа
+# Налаштування бази даних і секретного ключа
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///products.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'mysecretkey')  # Задайте свой секретный ключ для JWT
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'mysecretkey')  # Вкажіть свій секретний ключ для JWT
 db = SQLAlchemy(app)
 
 
-# Модель для продукта
+# Модель для продукту
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     itemNumber = db.Column(db.String(10), nullable=False)
@@ -27,19 +27,19 @@ class Product(db.Model):
     size = db.Column(db.String(1), nullable=False)
     country = db.Column(db.String(25), nullable=False)
     image = db.Column(db.String(50), nullable=False)
-    max_quantity = db.Column(db.Integer, nullable=False)  # Новое поле для максимального количества товаров
+    max_quantity = db.Column(db.Integer, nullable=False)  # Нове поле для максимальної кількості товарів
 
 
-# Модель для пользователя
+# Модель для користувача
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), unique=True, nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
-    password = db.Column(db.String(200), nullable=False)  # Хэшированный пароль
-    nonpassword = db.Column(db.String(200), nullable=False)  # Не хэшированный пароль
+    password = db.Column(db.String(200), nullable=False)  # Хешований пароль
+    nonpassword = db.Column(db.String(200), nullable=False)  # Не хешований пароль
 
 
-## Модель для элементов корзины
+# Модель для елементів кошика
 class CartItem(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
@@ -66,7 +66,7 @@ def get_users():
     return jsonify(users_list)
 
 
-# Регистрация нового пользователя
+# Реєстрація нового користувача
 @app.route('/api/register', methods=['POST'])
 def register():
     data = request.get_json()
@@ -76,12 +76,12 @@ def register():
     try:
         db.session.add(new_user)
         db.session.commit()
-        return jsonify({"message": "User registered successfully"}), 201
+        return jsonify({"message": "Користувач успішно зареєстрований"}), 201
     except:
-        return jsonify({"message": "User with this email or username already exists"}), 409
+        return jsonify({"message": "Користувач із такою електронною поштою або ім'ям вже існує"}), 409
 
 
-# Авторизация пользователя и генерация JWT
+# Авторизація користувача і генерація JWT
 @app.route('/api/login', methods=['POST'])
 def login():
     data = request.get_json()
@@ -94,10 +94,10 @@ def login():
         )
         return jsonify({'token': token})
     else:
-        return jsonify({"message": "Invalid credentials"}), 401
+        return jsonify({"message": "Недійсні облікові дані"}), 401
 
 
-# Декоратор для защиты маршрутов с использованием JWT
+# Декоратор для захисту маршрутів з використанням JWT
 from functools import wraps
 
 
@@ -107,15 +107,16 @@ def token_required(f):
         token = request.headers.get('Authorization')
         print("token", token)
         if not token:
-            return jsonify({"message": "Token is missing"}), 403
+            return jsonify({"message": "Токен відсутній"}), 403
         try:
             data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
             current_user = User.query.get(data['user_id'])
         except:
-            return jsonify({"message": "Token is invalid or expired"}), 403
+            return jsonify({"message": "Токен недійсний або закінчився"}), 403
         return f(current_user, *args, **kwargs)
 
     return decorated
+
 
 @app.route('/api/products', methods=['GET'])
 def get_products():
@@ -126,7 +127,7 @@ def get_products():
     country = request.args.get('country')
     search = request.args.get('search')
 
-    # Применение фильтров, если они переданы
+    # Застосування фільтрів, якщо вони передані
     if color and color != 'All Colors':
         query = query.filter(Product.color == color)
     if size and size != 'All Sizes':
@@ -155,7 +156,8 @@ def get_products():
     print(products_list)
     return jsonify(products_list)
 
-# Маршрут для добавления товара в корзину
+
+# Маршрут для додавання товару до кошика
 @app.route('/api/cart', methods=['POST'])
 @token_required
 def add_to_cart(current_user):
@@ -170,9 +172,9 @@ def add_to_cart(current_user):
 
     print("product", product)
     if not product:
-        return jsonify({"message": "Product not found"}), 404
+        return jsonify({"message": "Товар не знайдено"}), 404
     if quantity > product.max_quantity:
-        return jsonify({"message": "Quantity exceeds max limit"}), 400
+        return jsonify({"message": "Кількість перевищує максимальне обмеження"}), 400
 
     cart_item = CartItem.query.filter_by(user_id=current_user.id, itemNumber=item_number, size=size).first()
     if cart_item:
@@ -183,9 +185,10 @@ def add_to_cart(current_user):
         db.session.add(cart_item)
 
     db.session.commit()
-    return jsonify({"message": "Product added to cart"}), 200
+    return jsonify({"message": "Товар додано до кошика"}), 200
 
-# Маршрут для получения корзины текущего пользователя
+
+# Маршрут для отримання кошика поточного користувача
 @app.route('/api/cart', methods=['GET'])
 @token_required
 def get_cart(current_user):
@@ -203,15 +206,15 @@ def get_cart(current_user):
     return jsonify(cart)
 
 
-# Маршрут для выхода из аккаунта (очистка токена)
+# Маршрут для виходу з облікового запису (очищення токена)
 @app.route('/api/logout', methods=['POST'])
 def logout():
-    response = make_response({"message": "Logged out"})
+    response = make_response({"message": "Вийшли з облікового запису"})
     response.headers['Authorization'] = ''
     return response, 200
 
 
 if __name__ == '__main__':
-    with app.app_context():  # Контекст приложения для работы с базой данных
-        db.create_all()  # Создание таблиц в базе данных
+    with app.app_context():  # Контекст додатку для роботи з базою даних
+        db.create_all()  # Створення таблиць у базі даних
     app.run(debug=True)

@@ -3,20 +3,20 @@ import axios from 'axios';
 
 export const setCart = createAction('cart/setCart');
 
-// Действие для добавления в корзину
+// Дія для додавання в кошик
 export const addToCart = (product) => async (dispatch) => {
     try {
-        // Убедитесь, что токен отправляется с заголовком `Authorization`
+        // Переконання, що токен відправляється з заголовком `Authorization`
         await axios.post('http://localhost:5000/api/cart', product, {
             headers: { Authorization: `${localStorage.getItem('token')}` }
         });
         dispatch(fetchCart());
     } catch (error) {
-        console.error("Ошибка при добавлении товара в корзину:", error);
+        console.error("Помилка при додаванні товару в кошик:", error);
     }
 };
 
-// Действие для получения корзины
+// Дія для отримання кошика
 export const fetchCart = () => async (dispatch) => {
     try {
         const response = await axios.get('http://localhost:5000/api/cart', {
@@ -24,6 +24,6 @@ export const fetchCart = () => async (dispatch) => {
         });
         dispatch(setCart(response.data));
     } catch (error) {
-        console.error("Ошибка при загрузке корзины:", error);
+        console.error("Помилка при завантаженні кошика:", error);
     }
 };
