@@ -6,7 +6,7 @@ const authSlice = createSlice({
     initialState: {
         isAuthenticated: !!localStorage.getItem('token'),
         user: null,
-        error: null, // Добавлено состояние для ошибок
+        error: null, // стан для помилок
     },
     reducers: {
         loginSuccess: (state, action) => {
@@ -18,7 +18,7 @@ const authSlice = createSlice({
         },
         loginFailure: (state, action) => {
             state.isAuthenticated = false;
-            state.error = action.payload; // Устанавливаем сообщение об ошибке
+            state.error = action.payload; // повідомлення про помилку
         },
         logoutSuccess: (state) => {
             state.isAuthenticated = false;
@@ -48,7 +48,6 @@ export const register = (credentials) => async (dispatch) => {
         dispatch(loginFailure(response?.error || "Registration failed. Please try again."));
     }
 };
-
 
 export const logout = () => (dispatch) => {
     dispatch(logoutSuccess());
